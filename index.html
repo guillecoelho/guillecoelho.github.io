@@ -20,6 +20,13 @@
 				background-color: rgb(248, 249, 250);
 			}
 		</style>
+
+		<meta name="google-signin-scope" content="profile email" />
+		<meta
+			name="google-signin-client_id"
+			content="463157179476-6u7g1pa417f74u42lheo87vpu6r0eaqq.apps.googleusercontent.com.apps.googleusercontent.com"
+		/>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
 
 	<body>
@@ -49,8 +56,16 @@
 						/>
 						<div id="passInputError"></div>
 					</div>
-
-					<button class="btn btn-lg btn-primary" type="submit">Ingresar</button>
+					<div class="container-botones">
+						<button class="btn btn-lg btn-primary" type="submit">
+							Ingresar
+						</button>
+						<div
+							class="g-signin2"
+							data-onsuccess="onSignIn"
+							data-theme="dark"
+						></div>
+					</div>
 				</form>
 			</div>
 		</main>
