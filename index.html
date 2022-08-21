@@ -54,17 +54,25 @@
 							Ingresar
 						</button>
 
+						// DESAFIO OAUTH
 						<script
 							src="https://accounts.google.com/gsi/client"
 							async
 							defer
 						></script>
+
+						<script>
+							function singIn() {
+								window.location.href = 'principal.html';
+							}
+						</script>
+
 						<div
 							id="g_id_onload"
 							data-client_id="463157179476-6u7g1pa417f74u42lheo87vpu6r0eaqq.apps.googleusercontent.com"
 							data-context="signin"
 							data-ux_mode="popup"
-							data-login_uri="https://guillecoelho.github.io/"
+							data-callback="singIn"
 							data-auto_prompt="false"
 						></div>
 
