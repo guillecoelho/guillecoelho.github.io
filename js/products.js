@@ -1,3 +1,11 @@
+const ORDER_ASC_BY_NAME = 'AZ';
+const ORDER_DESC_BY_NAME = 'ZA';
+const ORDER_BY_PROD_COUNT = 'Cant.';
+let currentProductsArray = [];
+let currentSortCriteria = undefined;
+let minCount = undefined;
+let maxCount = undefined;
+
 const url_prod =
 	'https://japceibal.github.io/emercado-api/cats_products/' +
 	localStorage.getItem('catID') +
@@ -7,17 +15,61 @@ let currentProductList;
 
 document.addEventListener('DOMContentLoaded', function (e) {
 	getJSONData(url_prod).then(function (resultObj) {
-		console.log(resultObj.status);
 		if (resultObj.status === 'ok') {
 			currentProductList = resultObj.data;
-			console.log(currentProductList);
 			mostrarDatosMain();
-			showProductsList();
 		}
+	});
+
+	document.getElementById(
+		'nav-user'
+	).innerHTML += `<a class="nav-link active" href="">${localStorage.getItem(
+		'userID'
+	)}</a>`;
+
+	document.getElementById('sortAsc').addEventListener('click', () => {
+		sortAndShowProducts(ORDER_ASC_BY_NAME, currentProductList);
+	});
+
+	document.getElementById('sortDesc').addEventListener('click', () => {
+		sortAndShowProducts(ORDER_DESC_BY_NAME, currentProductList);
+	});
+
+	document.getElementById('sortByCount').addEventListener('click', () => {
+		sortAndShowProducts(ORDER_BY_PROD_COUNT, currentProductList);
+	});
+
+	document.getElementById('rangeFilterCount').addEventListener('click', () => {
+		minCount = document.getElementById('rangeFilterCountMin').value;
+		maxCount = document.getElementById('rangeFilterCountMax').value;
+
+		currentProductsArray = currentProductList.products;
+
+		showProductsList();
+	});
+
+	document.getElementById('clearRangeFilter').addEventListener('click', () => {
+		document.getElementById('rangeFilterCountMin').value = '';
+		document.getElementById('rangeFilterCountMax').value = '';
+
+		minCount = undefined;
+		maxCount = undefined;
+
+		mostrarDatosMain();
 	});
 });
 
-function showProductsList() {
+// PARTE 2
+function mostrarDatosMain() {
+	let mainHTML = `
+     <h2>Productos</h2>
+     <p class="lead">
+          Verás aquí todos los productos de la categoría <strong>${currentProductList.catName}</strong>.
+     </p>
+     `;
+
+	document.getElementById('mainHead').innerHTML = mainHTML;
+
 	let htmlContentToAppend = '';
 	for (let i = 0; i < currentProductList.products.length; i++) {
 		let product = currentProductList.products[i];
@@ -43,61 +95,9 @@ function showProductsList() {
 	}
 }
 
-// PARTE 2
-function mostrarDatosMain() {
-	let mainHTML = `
-     <div class="text-center p-4">
-          <h2>Productos</h2>
-          <p class="lead">
-               Verás aquí todos los productos de la categoría <strong>${currentProductList.catName}</strong>.
-          </p>
-     </div>
-     <div class="row">
-          <div class="col text-end">
-               <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-                    <input type="radio" class="btn-check" name="options" id="sortAsc">
-                    <label class="btn btn-light" for="sortAsc">A-Z</label>
-                    <input type="radio" class="btn-check" name="options" id="sortDesc">
-                    <label class="btn btn-light" for="sortDesc">Z-A</label>
-                    <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-                    <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
-               </div>
-          </div>
-     </div>
-     <div class="row">
-          <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-               <div class="row container p-0 m-0">
-                    <div class="col">
-                         <p class="font-weight-normal text-end my-2">Cant.</p>
-                    </div>
-                    <div class="col">
-                         <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-                    </div>
-                    <div class="col">
-                         <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-                    </div>
-                    <div class="col-3 p-0">
-                         <div class="btn-group" role="group">
-                              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
-                         </div>
-                    </div>
-               </div>
-          </div>
-     </div>
-     <div class="container">
-          <div class="row">
-               <div class="list-group" id="prod-list-container"></div>
-          </div>
-     </div>
-     `;
-
-	document.getElementById('mainID').innerHTML = mainHTML;
-}
-
 // PARTE 3
 
-function sortCategories(criteria, array) {
+function sortProducts(criteria, array) {
 	let result = [];
 	if (criteria === ORDER_ASC_BY_NAME) {
 		result = array.sort(function (a, b) {
@@ -121,8 +121,8 @@ function sortCategories(criteria, array) {
 		});
 	} else if (criteria === ORDER_BY_PROD_COUNT) {
 		result = array.sort(function (a, b) {
-			let aCount = parseInt(a.productCount);
-			let bCount = parseInt(b.productCount);
+			let aCount = parseInt(a.soldCount);
+			let bCount = parseInt(b.soldCount);
 
 			if (aCount > bCount) {
 				return -1;
@@ -135,4 +135,54 @@ function sortCategories(criteria, array) {
 	}
 
 	return result;
+}
+
+function sortAndShowProducts(sortCriteria, currentProductList) {
+	currentSortCriteria = sortCriteria;
+
+	if (currentProductList != undefined) {
+		currentProductsArray = currentProductList.products;
+	}
+
+	currentProductsArray = sortProducts(
+		currentSortCriteria,
+		currentProductsArray
+	);
+
+	//Muestro las categorías ordenadas
+	showProductsList();
+}
+
+function showProductsList() {
+	let htmlContentToAppend = '';
+	for (let i = 0; i < currentProductsArray.length; i++) {
+		let product = currentProductsArray[i];
+
+		if (
+			(minCount == undefined ||
+				(minCount != undefined && parseInt(product.soldCount) >= minCount)) &&
+			(maxCount == undefined ||
+				(maxCount != undefined && parseInt(product.soldCount) <= maxCount))
+		) {
+			htmlContentToAppend += `
+               <div onclick="setCatID(${product.id})" class="list-group-item list-group-item-action cursor-active">
+                    <div class="row">
+                         <div class="col-3">
+                              <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
+                         </div>
+                         <div class="col">
+                              <div class="d-flex w-100 justify-content-between">
+                                   <h4 class="mb-1">${product.name}</h4>
+                                   <small class="text-muted">${product.soldCount} artículos</small>
+                              </div>
+                              <p class="mb-1">${product.description}</p>
+                         </div>
+                    </div>
+               </div>
+               `;
+		}
+
+		document.getElementById('prod-list-container').innerHTML =
+			htmlContentToAppend;
+	}
 }
