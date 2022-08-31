@@ -1,12 +1,10 @@
-let datos = [];
 const userNameNav = document.getElementById('nav-user');
 
 document.addEventListener('DOMContentLoaded', function () {
-	cargarDatos();
-
-	console.log(datos);
-
-	userNameNav.innerHTML += `${datos[0]}`;
+	// PARTE 1
+	userNameNav.innerHTML += `<a class="nav-link active" href="">${localStorage.getItem(
+		'userID'
+	)}</a>`;
 
 	document.getElementById('autos').addEventListener('click', function () {
 		localStorage.setItem('catID', 101);
@@ -21,7 +19,3 @@ document.addEventListener('DOMContentLoaded', function () {
 		window.location = 'products.html';
 	});
 });
-
-function cargarDatos() {
-	datos = JSON.parse(localStorage.getItem('Datos')) || [];
-}

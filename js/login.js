@@ -3,15 +3,11 @@ const divmail = document.getElementById('mailInputError');
 const pass = document.getElementById('floatingPassword');
 const divpass = document.getElementById('passInputError');
 
-let datos = [];
-
 document.addEventListener('DOMContentLoaded', () => {
 	mail.value = '';
 	pass.value = '';
 	mail.style.borderColor = 'grey';
 	pass.style.borderColor = 'grey';
-
-	cargarDatos();
 
 	document.getElementById('formLogin').addEventListener('submit', (e) => {
 		e.preventDefault();
@@ -27,9 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (mail.value != '' && pass.value != '') {
 			let usuario = mail.value;
 			console.log('Usuario');
-			datos.push(usuario);
-			localStorage.setItem('Datos', JSON.stringify(datos));
-			console.log('Llega');
+			localStorage.setItem('userID', usuario);
 			window.location.href = 'principal.html';
 		}
 	});
@@ -47,8 +41,4 @@ function mostrarError(mensaje, tipo) {
 		passError.classList.add('text-red-500');
 		divpass.appendChild(passError);
 	}
-}
-
-function cargarDatos() {
-	datos = JSON.parse(localStorage.getItem('Datos')) || [];
 }
