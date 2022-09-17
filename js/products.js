@@ -6,10 +6,9 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
-const url_prod =
-	'https://japceibal.github.io/emercado-api/cats_products/' +
-	localStorage.getItem('catID') +
-	'.json';
+const url_prod = `https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem(
+	'catID'
+)}.json`;
 
 let currentProductList;
 
@@ -78,7 +77,7 @@ function mostrarDatosMain() {
 	for (let i = 0; i < currentProductList.products.length; i++) {
 		let product = currentProductList.products[i];
 		htmlContentToAppend += `
-          <div onclick="setCatID(${product.id})" class="list-group-item list-group-item-action cursor-active">
+          <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action cursor-active">
                <div class="row">
                     <div class="col-3">
                          <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
@@ -157,7 +156,7 @@ function showProductsList() {
 				(maxCount != undefined && parseInt(product.soldCount) <= maxCount))
 		) {
 			htmlContentToAppend += `
-               <div onclick="setCatID(${product.id})" class="list-group-item list-group-item-action cursor-active">
+               <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action cursor-active">
                <div class="row">
                     <div class="col-3">
                          <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
@@ -177,4 +176,9 @@ function showProductsList() {
 		document.getElementById('prod-list-container').innerHTML =
 			htmlContentToAppend;
 	}
+}
+
+function setProdID(id) {
+	localStorage.setItem('prodId', id);
+	window.location = 'product-info.html';
 }
