@@ -86,7 +86,7 @@ async function cargarDatos() {
           <hr>
           <div class="row p-3">
                <h4>Comentarios</h4>
-               <ul class="list-group">
+               <ul class="list-group" id="ulComentarios">
                     ${comentarios}
                </ul>
           </div>
@@ -99,17 +99,17 @@ async function cargarDatos() {
                               <label for="coment">Tu opinión</label>
                          </div>
                          <div class="input-group mb-3 p-2">
-                              <label class="input-group-text" for="inputGroupSelect01">Puntuación</label>
-                              <select class="form-select" id="inputGroupSelect01">
-                              <option value="1" selected>1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
+                              <label class="input-group-text" for="selectPunt">Puntuación</label>
+                              <select class="form-select" id="selectPunt">
+                                   <option value="1" selected>1</option>
+                                   <option value="2">2</option>
+                                   <option value="3">3</option>
+                                   <option value="4">4</option>
+                                   <option value="5">5</option>
                               </select>
                          </div>
                          <div class="mx-auto text-center">
-                              <button type="button" class="btn btn-primary">Enviar</button>
+                              <button type="button" class="btn btn-primary" onclick="comentarDat()">Enviar</button>
                          </div>
                          
                     </form>
@@ -118,4 +118,41 @@ async function cargarDatos() {
      </div>`;
 
 	contInfo.innerHTML += htmlContentToAppend;
+}
+
+function comentarDat() {
+	const coment = document.getElementById('coment').value;
+	const punt = document.getElementById('selectPunt').value;
+
+	let fecha = new Date();
+
+	const dia = fecha.getDate();
+	const mes = fecha.getMonth() + 1;
+	const anio = fecha.getFullYear();
+	const hora = fecha.getHours();
+	const min = fecha.getMinutes();
+	const sec = fecha.getSeconds();
+
+	fecha = `${anio} - ${mes} - ${dia} ${hora}:${min}:${sec}`;
+
+	let liComentario = `<li class="list-group-item">
+     <p><span class="fw-bold">${localStorage.getItem(
+				'userID'
+			)}</span> - ${fecha} - `;
+	for (let j = 0; j < punt; j++) {
+		liComentario += `
+     <span class="fa fa-star checked"></span>
+     `;
+	}
+	for (let j = punt; j < 5; j++) {
+		liComentario += `
+     <span class="fa fa-star"></span>
+     `;
+	}
+	liComentario += `
+     </p>
+          <p>${coment}</p>
+     </li>`;
+
+	document.getElementById('ulComentarios').innerHTML += liComentario;
 }
