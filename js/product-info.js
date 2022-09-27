@@ -8,6 +8,7 @@ let comeProd = [];
 
 document.addEventListener('DOMContentLoaded', () => {
 	cargarDatos();
+	console.log(info);
 });
 
 async function cargarDatos() {
@@ -53,6 +54,19 @@ async function cargarDatos() {
                </p>
                <p>${comeProd[i].description}</p>
           </li>`;
+	}
+
+	let prodRelacionados = '';
+
+	for (let i = 0; i < infoProd.relatedProducts.length; i++) {
+		prodRelacionados += `
+          <div class="col-md-auto cursor-active" onclick="setProdID(${infoProd.relatedProducts[i].id})">
+               <figure class="figure">
+                    <img src="${infoProd.relatedProducts[i].image}" class="figure-img imgIlust rounded" alt="Img de ${infoProd.relatedProducts[i].name}">
+                    <figcaption class="figure-caption fs-5">${infoProd.relatedProducts[i].name}</figcaption>
+               </figure>
+          </div>
+          `;
 	}
 
 	let htmlContentToAppend = `
@@ -111,9 +125,13 @@ async function cargarDatos() {
                          <div class="mx-auto text-center">
                               <button type="button" class="btn btn-primary" onclick="comentarDat()">Enviar</button>
                          </div>
-                         
                     </form>
                </div>
+          </div>
+          <hr>
+          <div class="row p-3">
+               <h4>Productos Relacionados</h4>
+               ${prodRelacionados}
           </div>
      </div>`;
 
@@ -155,4 +173,9 @@ function comentarDat() {
      </li>`;
 
 	document.getElementById('ulComentarios').innerHTML += liComentario;
+}
+
+function setProdID(id) {
+	localStorage.setItem('prodId', id);
+	window.location = 'product-info.html';
 }
