@@ -114,11 +114,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 		}
 	});
 
-	document.getElementById(
-		'nav-user'
-	).innerHTML += `<a class="nav-link active" href="">${localStorage.getItem(
-		'userID'
-	)}</a>`;
+	cargarUser();
 
 	document.getElementById('sortAsc').addEventListener('click', function () {
 		sortAndShowCategories(ORDER_ASC_BY_NAME);

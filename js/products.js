@@ -15,11 +15,7 @@ let currentProductList;
 document.addEventListener('DOMContentLoaded', function (e) {
 	cargarListaProductos();
 
-	document.getElementById(
-		'nav-user'
-	).innerHTML += `<a class="nav-link active" href="">${localStorage.getItem(
-		'userID'
-	)}</a>`;
+	cargarUser();
 
 	document.getElementById('sortAsc').addEventListener('click', () => {
 		sortAndShowProducts(ORDER_ASC_BY_NAME, currentProductList);

@@ -1,10 +1,10 @@
-const userNameNav = document.getElementById('nav-user');
+function logout() {
+	localStorage.removeItem('userID');
+	//window.location = 'index.html';
+}
 
 document.addEventListener('DOMContentLoaded', function () {
-	// PARTE 1
-	userNameNav.innerHTML += `<a class="nav-link active" href="">${localStorage.getItem(
-		'userID'
-	)}</a>`;
+	cargarUser();
 
 	document.getElementById('autos').addEventListener('click', function () {
 		localStorage.setItem('catID', 101);

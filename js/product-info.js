@@ -7,6 +7,7 @@ let infoProd = [];
 let comeProd = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+	cargarUser();
 	cargarDatos();
 	console.log(info);
 });
