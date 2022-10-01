@@ -28,11 +28,19 @@ async function cargarDatos() {
 	let rowImagenes = '';
 
 	for (let i = 0; i < infoProd.images.length; i++) {
-		rowImagenes += `
-          <div class="col-md-auto">
-               <img src="${infoProd.images[i]}" class="imgIlust rounded">
-          </div>
-          `;
+		if (i == 0) {
+			rowImagenes += `
+               <div class="carousel-item active">
+                    <img src="${infoProd.images[i]}" class="d-block w-100">
+               </div>
+               `;
+		} else {
+			rowImagenes += `
+               <div class="carousel-item">
+                    <img src="${infoProd.images[i]}" class="d-block w-100">
+               </div>
+               `;
+		}
 	}
 
 	let comentarios = '';
@@ -96,7 +104,21 @@ async function cargarDatos() {
                <p><span class="fw-bold">Imagenes ilustrativas</span></p>
           </div>
           <div class="row d-flex gap-3 flex-wrap justify-content-around align-content-between">
-               ${rowImagenes}
+               <div id="carouselExampleControls" class="carousel slide w-50" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                    ${rowImagenes}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+               </div>
           </div>
           <hr>
           <div class="row p-3">
