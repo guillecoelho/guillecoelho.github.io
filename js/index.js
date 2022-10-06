@@ -1,8 +1,3 @@
-function logout() {
-	localStorage.removeItem('userID');
-	//window.location = 'index.html';
-}
-
 document.addEventListener('DOMContentLoaded', function () {
 	cargarUser();
 

@@ -65,3 +65,8 @@ let cargarUser = function () {
 	</div>
 	`;
 };
+
+let logout = function () {
+	localStorage.removeItem('userID');
+	//window.location = 'index.html';
+};
