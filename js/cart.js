@@ -9,25 +9,29 @@ document.addEventListener('DOMContentLoaded', () => {
 async function cargarDatos() {
 	await getJSONData(cartUrl).then(function (resultObj) {
 		if (resultObj.status === 'ok') {
-			carrito = resultObj.data;
+			carrito = resultObj.data.articles;
 		}
 	});
 
+	await agregarLista(carrito);
+}
+
+function agregarLista(carrito) {
 	let itemsCarrito = '';
 
 	let cont = 0;
-	for (item of carrito.articles) {
+	for (item of carrito) {
 		itemsCarrito += `
           <tr>
                <th scope="row"><img src="${
 									item.image
 								}" style="width: 100px;height: auto;"></th>
-               <td>${item.name}</td>
-               <td id="costo">${item.currency} ${item.unitCost}</td>
-               <td><input id="inputCount_${cont}" type="text" value="${
+                    <td>${item.name}</td>
+                    <td id="costo">${item.currency} ${item.unitCost}</td>
+                    <td><input id="${cont}" type="text" value="${
 			item.count
-		}" class="w-25" onchange="subTotal(this.value, this.id)"></td>
-               <th id="subtotal">${item.currency} ${
+		}" class="w-25 subtotal"></td>
+                    <th id="sub_${cont}">${item.currency} ${
 			item.unitCost * item.count
 		}</th>
           </tr>
@@ -56,12 +60,19 @@ async function cargarDatos() {
      `;
 
 	document.getElementById('listaCarrito').innerHTML += listado;
+
+	document.querySelectorAll('.subtotal').forEach((item) => {
+		item.addEventListener('input', () => {
+			subTotal(item.value, item.id, carrito[item.id]);
+		});
+	});
 }
 
-function subTotal(value, id) {
+function subTotal(value, id, item) {
+	let subt = `${item.currency} ${item.unitCost * value}`;
 	if (value != '') {
-		let precio = document.getElementById('costo').value.toString().split('');
-		let sub = precio * value;
-		console.log(sub);
+		document.getElementById('sub_' + id).innerHTML = subt;
+	} else {
+		document.getElementById('sub_' + id).innerHTML = 'Esperando Cantidad';
 	}
 }
