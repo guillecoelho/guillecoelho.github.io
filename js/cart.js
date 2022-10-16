@@ -3,6 +3,8 @@ const cartUrl = CART_INFO_URL + '25801.json';
 let carrito = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+	cargarUser();
+
 	cargarDatos();
 });
 
