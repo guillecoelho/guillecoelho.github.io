@@ -55,7 +55,7 @@ let cargarUser = function () {
 				<a href="cart.html">Mi carrito</a>
 			</div>
 			<div class="dropdown-item d-flex justify-content-between">
-				<a href="cart.html">Mi perfil</a>
+				<a href="my-profile.html">Mi perfil</a>
 			</div>
 			<div onclick="logout()" class="dropdown-item d-flex justify-content-between">
 				<a href="index.html">Cerrar Sesión</a>
