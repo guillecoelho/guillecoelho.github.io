@@ -6,61 +6,81 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Guillermo Coelho</title>
 
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
 	<body>
-		<div id="dhead" class="container">
-			<div class="row">
-				<div id="dpic">
-					<img src="resources/perf.jpg" class="ppic" />
+		<div class="flex justify-center my-10 container">
+			<img
+				src="resources/perf.jpg"
+				class="rounded-full object-scale-down h-auto w-60 mr-10"
+			/>
+
+			<div>
+				<h1 class="text-4xl font-extrabold">Guillermo Coelho</h1>
+				<h2 class="text-xl text-gray-600">
+					Estudiante de Ingeniería en Computación
+				</h2>
+				<a href="https://github.com/guillecoelho" target="_blank"
+					><img src="resources/github.svg" class="object-scale-down h-10 w-10"
+				/></a>
+			</div>
+		</div>
+
+		<hr />
+
+		<div class="bg-gray-100 my-5">
+			<div>
+				<div class="flex justify-center my-2">
+					<h3 class="text-2xl font-extrabold">Experiencia</h3>
 				</div>
-				<div id="ddesc">
-					<h1>Guillermo Coelho</h1>
-					<h2>Estudiante de Ingeniería en Computación</h2>
-					<a href="https://github.com/guillecoelho" target="_blank"
-						><img src="resources/github.svg" class="iico"
-					/></a>
+
+				<div class="flex justify-center">
+					<p class="font-extrabold text-indigo-500 mr-5">Marzo 2023</p>
+					<div>
+						<span class="font-extrabold"
+							>Desarrollador RPA (Robot Process Automation)</span
+						>
+						<br />
+						Trabajo con las herramientas Microsoft Power Automate y Automation
+						Anywhere.
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<hr />
 
-		<div style="background-color: #f8f8f8">
-			<div class="container">
-				<h3>Experiencia</h3>
-				<div class="entry row">
-					<div class="timespan">Marzo 2023</div>
-					<div class="ico">
-						<div class="entry-dot"></div>
-					</div>
-					<div class="desc">
-						<div class="htxt">
-							<strong>Desarrollador RPA (Robot Process Automation)</strong>
-							<br />
-							Trabajo con las herramientas Microsoft Power Automate y Automation
-							Anywhere.
-						</div>
-					</div>
+		<div class="my-5 box-border">
+			<div>
+				<div class="flex justify-center my-2">
+					<h3 class="text-2xl font-extrabold">Proyectos</h3>
 				</div>
-			</div>
-		</div>
 
-		<hr />
-
-		<div id="history" class="container">
-			<h3>Proyectos</h3>
-
-			<div class="entry row">
-				<div class="timespan">2023</div>
-				<div class="ico">
-					<div class="entry-dot"></div>
-				</div>
-				<div class="desc">
-					<div class="htxt">
-						Trabajando en algoritmos de recomendación con Python. Para ver un
-						poco más y código aquí
+				<div class="flex justify-center mx-20 my-5">
+					<p class="font-extrabold text-indigo-500 mr-5">2023</p>
+					<div>
+						<span class="font-extrabold"
+							>Pequeño proyecto en
+							<span class="text-indigo-500">React</span>,</span
+						>
+						de un cotizador de prestamos. Simplemente se trata de implementar
+						una interfaz para calcular, en base al dinero prestado y las cuotas
+						en que se va a pagar, la cuota mensual.
 						<a
+							class="text-blue-600 visited:text-purple-600"
+							target="_blank"
+							href="https://cotizador-guille-coelho.netlify.app"
+							>Link</a
+						>
+						<br />
+						<br />
+						<span class="font-extrabold"
+							>Trabajando en algoritmos de recomendación con Python.</span
+						>
+						<br />
+						Para ver un poco más y código aquí
+						<a
+							class="text-blue-600 visited:text-purple-600"
 							target="_blank"
 							href="https://colab.research.google.com/drive/1pV0P1ODBeaOMmJvlc2fc_zQViuk05abZ?usp=sharing"
 							>colab notebook</a
@@ -71,55 +91,42 @@
 						<a href="https://grouplens.org/datasets/movielens/">MovieLens</a>.
 					</div>
 				</div>
-			</div>
 
-			<div class="entry row">
-				<div class="timespan">2022</div>
-				<div class="ico">
-					<div class="entry-dot"></div>
-				</div>
-				<div class="desc">
-					<div class="htxt">
-						<a href="PrJAPECommerce/index.html" target="_blank"
+				<div class="flex justify-center mx-20 my-5">
+					<p class="font-extrabold text-indigo-500 mr-5">2022</p>
+					<div>
+						<a
+							class="text-blue-600 visited:text-purple-600"
+							href="PrJAPECommerce/index.html"
+							target="_blank"
 							>Proyecto final de JAP Fase 2</a
 						>. Un e-commerce.
-					</div>
-					<div class="hassets" style="height: 304px; margin: 20px 0 10px 0">
-						<div class="hasset">
-							<img src="resources/prJap.png" width="700px" />
-						</div>
+						<br />
+						<img class="object-scale-down h-40" src="resources/prJap.png" />
 					</div>
 				</div>
-			</div>
 
-			<div class="entry row">
-				<div class="timespan">2020</div>
-				<div class="ico">
-					<div class="entry-dot"></div>
-				</div>
-				<div class="desc">
-					<div class="htxt">
+				<div class="flex justify-center mx-20 my-5">
+					<p class="font-extrabold text-indigo-500 mr-5">2020</p>
+					<div>
 						<a
+							class="text-blue-600 visited:text-purple-600"
 							href="https://github.com/guillecoelho/ClassroomProject"
 							target="_blank"
 							>Proyecto Classroom Hackathon</a
-						>
+						>.
 					</div>
 				</div>
-			</div>
 
-			<div class="entry row">
-				<div class="timespan">2018</div>
-				<div class="ico">
-					<div class="entry-dot"></div>
-				</div>
-				<div class="desc">
-					<div class="htxt">
+				<div class="flex justify-center mx-20 my-5">
+					<p class="font-extrabold text-indigo-500 mr-5">2018</p>
+					<div>
 						<a
+							class="text-blue-600 visited:text-purple-600"
 							href="https://github.com/guillecoelho/flickers_biblioteca"
 							target="_blank"
 							>Proyecto Final UTU</a
-						>
+						>.
 					</div>
 				</div>
 			</div>
@@ -128,11 +135,16 @@
 		<hr />
 
 		<footer>
-			<div class="container">
-				<p style="text-align: center">
-					Página hecha por Guillermo Coelho. <br />
-					Última actualización: 17/05/2023
-				</p>
+			<div class="my-5">
+				<div class="flex justify-center">
+					Página hecha por
+					<span class="text-indigo-500">Guillermo Coelho</span>. Última
+					actualización: 17/07/2023
+				</div>
+				<div class="flex justify-center">
+					Probando implementar <span class="font-extrabold">Tailwind</span> para
+					estilo.
+				</div>
 			</div>
 		</footer>
 
