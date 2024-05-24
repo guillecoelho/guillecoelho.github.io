@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>homepage | Guillermo Coelho</title>
+
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body class="bg-slate-700 text-white">
+		<header>
+			<nav class="bg-pink-400 rounded-full">
+				<div
+					class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 flex justify-between hover:cursor-not-allowed"
+				>
+					<div class="flex flex-shrink-0 items-center">
+						<span class="text-2xl font-extrabold text-white hover:text-black"
+							>Guille</span
+						>
+					</div>
+					<div class="relative flex h-16 items-center">
+						<div
+							class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+						>
+							<div class="hidden sm:ml-6 sm:block">
+								<div class="flex space-x-4">
+									<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+									<a
+										href="#"
+										class="bg-red-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+										aria-current="page"
+										>Inicio</a
+									>
+									<a
+										href="src/blog.html"
+										class="text-slate-900 hover:bg-red-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+										>Blog</a
+									>
+									<a
+										href="src/about.html"
+										class="text-slate-900 hover:bg-red-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+										>Acerca</a
+									>
+									<a
+										href="src/contact.html"
+										class="text-slate-900 hover:bg-red-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+										>Contacto</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<div class="lg:my-10 my-5">
+			<div class="flex justify-center">
+				<div class="lg:mx-10 mx-5">
+					<h1 class="text-4xl font-extrabold">
+						Hello there. Soy Guillermo Coelho
+					</h1>
+					<h2 class="text-xl text-slate-100">
+						y soy estudiante de Ingeniería en Computación
+					</h2>
+					<a href="https://github.com/guillecoelho" target="_blank"
+						><img
+							src="resources/github.svg"
+							class="object-scale-down h-10 w-10 mt-5"
+					/></a>
+				</div>
+
+				<img
+					src="resources/perf.jpg"
+					class="object-scale-down h-auto lg:w-80 md:w-48 w-[100px] mr-10"
+				/>
+			</div>
+		</div>
+
+		<div class="bg-gray-900">
+			<hr />
+			<div class="my-5 lg:mx-80 md:mx-10 sm:mx-5">
+				<div class="flex justify-center my-2">
+					<h3 class="text-2xl font-extrabold">Experiencia</h3>
+				</div>
+
+				<div class="flex justify-center">
+					<p class="font-extrabold text-teal-300 mr-5">Marzo 2023</p>
+					<div>
+						<span class="font-extrabold"
+							>Desarrollador RPA (Robot Process Automation)</span
+						>
+						<br />
+						Trabajo con las herramientas Microsoft Power Automate y Automation
+						Anywhere 360. Creo bots para empresas principalmente para en el
+						sector financiero.
+					</div>
+				</div>
+			</div>
+			<hr />
+		</div>
+
+		<div class="my-5 box-border flex lg:mx-80 md:mx-10 sm:mx-5">
+			<div class="w-30">
+				<div class="flex justify-center my-2">
+					<h3 class="text-2xl font-extrabold">Proyectos</h3>
+				</div>
+
+				<div class="flex justify-center my-5">
+					<p class="font-extrabold text-teal-300 mr-5">2024</p>
+					<div>
+						<div>
+							<span class="font-extrabold">OInteriorismo</span>
+							<a
+								href="http://www.ointeriorismo.com/"
+								target="_blank"
+								class="text-indigo-300 underline"
+								>Visitar</a
+							>
+							<br />
+							Este es el último proyecto que hice, es una pequeña página para un negocio familiar. Esta hecho sobre NextJS como práctica pero es simplemete un proyecto más orientado a frontend y es bastante básica.
+						</div>
+						<br />
+					</div>
+				</div>
+
+				<div class="flex justify-center my-5">
+					<p class="font-extrabold text-teal-300 mr-5">2023</p>
+					<div>
+						<div>
+							(Activo)
+							<span class="font-extrabold">Morat Accesorios</span>
+							<a
+								href="https://morat-accesorios.netlify.app/"
+								target="_blank"
+								class="text-indigo-300 underline"
+								>Visitar</a
+							>
+							<br />
+							El proyecto más activo que tengo actualmente es una página de un
+							catálogo de accesorios. Actualmente esta muy verde pero mi idea es
+							actualizarla a usar NextJs junto con alguna base de datos en
+							PostgreSQL. Por esto hay 2 versiones en Github.
+						</div>
+						<br />
+						<span class="font-extrabold"
+							>Pequeño proyecto en
+							<span class="text-teal-300">React</span>,</span
+						>
+						de un cotizador de prestamos. Simplemente se trata de implementar
+						una interfaz para calcular, en base al dinero prestado y las cuotas
+						en que se va a pagar, la cuota mensual.
+						<a
+							class="text-blue-600 visited:text-purple-600"
+							target="_blank"
+							href="https://cotizador-guille-coelho.netlify.app"
+							>Link</a
+						>
+						<br />
+						<br />
+						<span class="font-extrabold"
+							>Trabajando en algoritmos de recomendación con Python.</span
+						>
+						<br />
+						Para ver un poco más y código aquí
+						<a
+							class="text-blue-600 visited:text-purple-600"
+							target="_blank"
+							href="https://colab.research.google.com/drive/1pV0P1ODBeaOMmJvlc2fc_zQViuk05abZ?usp=sharing"
+							>colab notebook</a
+						>. Como explico allí, ahora estoy trabajando con una forma vieja y
+						una base de peliculas reducida en un .json. Pero la idea es llevar
+						esto a un algoritmo más avanzado y hacer pruebas con un dataset de
+						un tamaño considerable como puede ser
+						<a href="https://grouplens.org/datasets/movielens/">MovieLens</a>.
+					</div>
+				</div>
+
+				<div class="flex justify-center mx-20 my-5">
+					<p class="font-extrabold text-teal-300 mr-5">2022</p>
+					<div class="flex flex-col justify-center">
+						<div>
+							<a
+								class="text-blue-600 visited:text-purple-600"
+								href="https://github.com/guillecoelho/jap_proyecto"
+								target="_blank"
+								>Proyecto final de JAP Fase 2</a
+							>. Un e-commerce construido con HTML, CSS y JS puro. Anteriormente
+							tenia el sitio subido en este mismo repositorio y se podia acceder
+							facilmente, ahora lo elimine de este repositorio para tenerlo más
+							ligero y lo puse en otro separado por esto es que no lo tengo
+							deployado. En un futuro tal vez lo suba a alguna web como Netlify.
+						</div>
+						<div class="flex justify-center">
+							<img
+								class="lg:w-[768px] md:w-[400px] h-auto mt-5"
+								src="resources/prJap.png"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div class="flex justify-center mx-20 my-5">
+					<p class="font-extrabold text-teal-300 mr-5">2020</p>
+					<div>
+						<a
+							class="text-blue-600 visited:text-purple-600"
+							href="https://github.com/guillecoelho/ClassroomProject"
+							target="_blank"
+							>Proyecto Classroom Hackathon</a
+						>.
+						<br />
+						<div>
+							Proyecto desarrollado en Java presentado en la hackathon
+							organizado por Universidad de Salamanca en 2020. Primera Hackathon
+							online.
+						</div>
+					</div>
+				</div>
+
+				<div class="flex justify-center mx-20 my-5">
+					<p class="font-extrabold text-teal-300 mr-5">2018</p>
+					<div>
+						<a
+							class="text-blue-600 visited:text-purple-600"
+							href="https://github.com/guillecoelho/flickers_biblioteca"
+							target="_blank"
+							>Proyecto Final UTU</a
+						>.
+						<br />
+						<div>
+							Proyecto final de bachillerato en UTU, un programa de gestion
+							realizado para la Biblioteca Municipal de Salto. Esta construido
+							en Visual Basic y usa una base de datos SQL.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr />
+
+		<footer>
+			<div class="my-5">
+				<div class="flex justify-center">
+					<span
+						>Página hecha por
+						<span class="text-teal-300">Guillermo Coelho</span>. Última
+						actualización: 02/11/2023
+					</span>
+				</div>
+				<div class="flex justify-center">
+					<span>Estilo con <span class="text-teal-300">Tailwind</span>.</span>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/script.js"></script>
+	</body>
+</html>
